@@ -1,0 +1,64 @@
+body {
+  background-color: grey;
+}
+
+#container {
+  margin: 0, auto;
+  max-width: 70%;
+}
+
+a {
+  text-decoration: none;
+  padding: 5px;
+  margin: 5px;
+  height: 10px;
+}
+
+a:hover {
+  color: red;
+}
+
+#nav li {
+ display: inline;
+ padding: 5px
+}
+
+#task {
+  padding-top: 10px;
+  text-align: left;
+  margin:1px;
+}
+
+h1, #task > h1 {
+  text-align: center;
+  border-style: ridge;
+  border-width: 5px;
+  margin: 1px;
+}
+
+#task > p {
+   margin: 1px;
+   padding: 5px;
+}
+
+#landing {
+  text-align: center;
+}
+
+h3 {
+  margin: 5px;
+}
+
+#new {
+  border-style: ridge;
+  border-width: 5px;
+}
+
+#new form {
+  margin-left: 100px;
+  padding: 10px;
+
+}
+
+#greeting {
+}

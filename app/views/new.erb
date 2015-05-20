@@ -1,7 +1,12 @@
-<form action="/tasks" method='post' tabindex='1'>
-  <p>Enter a new task:</p>
-  <input type='text' name='task[title]' tabindex='2'/><br/>
-  <textarea name= 'task[description]' tabindex='3'></textarea><br/>
-  <input type='submit'/ tabindex='4'>
-</form>
-
+<div id='new'>
+  <form action="/tasks" method='post'>
+    <p>Enter a new task:</p>
+    <p id='form'>
+      Task name: <input type='text' name='task[title]'/><br/>
+    <br/>
+    Description: <textarea name='task[description]'></textarea><br/>
+    <br/>
+    <input type='submit' value='submit'/>
+    </p>
+  </form>
+</div>
