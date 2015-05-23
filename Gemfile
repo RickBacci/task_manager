@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
-
+gem 'sequel'
+gem 'sqlite3'
+gem 'pry'
 gem 'sinatra', require: 'sinatra/base'
 gem 'shotgun'
 gem 'minitest'
 gem 'capybara'
 gem 'launchy'
-
+gem 'database_cleaner'
