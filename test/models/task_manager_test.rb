@@ -10,50 +10,47 @@ class TaskManagerTest < Minitest::Test
   end
 
   def test_can_create_a_task
-    data = { :title => "learn sinatra",
-             :description => "seriously.",
-             :id => 1}
+    data = { title: "learn sinatra",
+       description: "seriously." }
 
     TaskManager.create(data)
-    task = TaskManager.find(1)
-
+    task = TaskManager.all.last
+    
     assert_equal "learn sinatra", task.title
     assert_equal "seriously.", task.description
-    assert_equal 1, task.id
   end
 
   def test_can_display_all_tasks
     create_tasks(2)
     all_tasks = TaskManager.all
-    assert_equal ['task0', 'task1'], all_tasks.map(&:title)
+    assert_equal ['task0', 'task1'], all_tasks.pop(2).map(&:title)
   end
 
   def test_can_find_a_task_by_id
-    create_tasks(5)
-    task = TaskManager.find(2)
-
-    assert_equal "task1", task.title
-    assert_equal "description1", task.description
-    assert_equal 2, task.id
-  end
-
-  def test_can_update_a_task
     create_tasks(1)
-    task = TaskManager.find(1)
+    task = TaskManager.all.last
 
     assert_equal "task0", task.title
     assert_equal "description0", task.description
+  end
 
-    data = { :title => "i've changed",
-             :description => 'me too' }
+  def test_can_update_a_task
+    last_title = TaskManager.all.last.title
 
-    task = TaskManager.update(1, data)
-    task = TaskManager.find(1)
-    assert_equal "i've changed", task.title
+    data = { title: 'new-ness', description: 'new car smell' }
+    TaskManager.create(data)
+     
+    assert_equal 'new-ness', TaskManager.all.last.title
   end
 
   def test_can_delete_a_task
-    create_tasks(3)
-    assert_equal 2,  TaskManager.delete(1).count
+    create_tasks(2)
+
+    total = TaskManager.all.count
+    last_id = TaskManager.all.last.id  
+
+    TaskManager.delete(last_id)
+
+    assert_equal total - 1, TaskManager.all.size
   end
 end
