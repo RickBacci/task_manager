@@ -8,18 +8,16 @@ class TaskManager
   end
 
   def self.create(task)
-     dataset.insert( :title => task[:title], :description => task[:description])
+     dataset.insert(title: task[:title], description: task[:description])
   end
 
   def self.all
-    dataset.map do |data|
-      Task.new(data)
-    end
+    dataset.map { |data| Task.new(data) }
   end
   
   def self.find(id)
-    task = dataset.where(:id => id)
-    Task.new(task.to_a[0])
+    task = dataset.where(id: id)
+    Task.new(task.first.to_a)
   end
 
   def self.update(id, data)
