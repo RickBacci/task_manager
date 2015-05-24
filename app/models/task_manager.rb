@@ -9,8 +9,8 @@ class TaskManager
 
   def self.destroy_database
     @database ||= Sequel.sqlite('db/task_manager_test.sqlite3')
-    @database.drop_table?(:tasks)
-    @database.create_table?(:tasks) do
+    @database.drop_table(:tasks)
+    @database.create_table(:tasks) do
       primary_key :id
       String :title
       String :description
