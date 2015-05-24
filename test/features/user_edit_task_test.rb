@@ -1,7 +1,6 @@
 require_relative '../test_helper.rb'
 
 class EditTaskTest < FeatureTest
-
   def test_user_can_edit_task
     TaskManager.destroy_database
     TaskManager.create(title: "Practice Capybara",
@@ -19,5 +18,4 @@ class EditTaskTest < FeatureTest
     assert page.has_content?("tomorrow")
     assert page.has_content?("sequel")
   end
-
 end
