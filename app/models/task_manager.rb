@@ -17,16 +17,20 @@ class TaskManager
     end
   end
 
-  def self.create(task)
-     dataset.insert(title: task[:title], description: task[:description])
+  def self.dataset
+    database.from(:tasks)
   end
 
   def self.all
     dataset.map { |data| Task.new(data) }
   end
-  
+ 
+  def self.create(task)
+     dataset.insert(title: task[:title], description: task[:description])
+  end
+
   def self.find(id)
-    task = dataset.where(id: id.to_i)
+    task = dataset.where(id: id)
     Task.new(task.to_a[0])
   end
 
@@ -36,13 +40,5 @@ class TaskManager
 
   def self.delete(id)
     dataset.where(id: id).delete
-  end
-
-  def self.delete_all
-    dataset.delete
-  end
-
-  def self.dataset
-    database.from(:tasks)
   end
 end
