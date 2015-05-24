@@ -3,9 +3,10 @@ require_relative '../test_helper'
 class TaskManagerTest < Minitest::Test
 
   def create_tasks(num)
+    TaskManager.destroy_database
     num.times do |x|
-      TaskManager.create(title: "task#{x}",
-                   description: "description#{x}")
+      TaskManager.create(title: "task#{x + 1}",
+                   description: "description#{x + 1}")
     end
   end
 
