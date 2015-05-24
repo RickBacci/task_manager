@@ -37,9 +37,5 @@ class TaskManagerApp < Sinatra::Base
     TaskManager.delete(id.to_i)
     redirect "/tasks"
   end
-
-  not_found do
-    erb :error
-  end
 end
 
