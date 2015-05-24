@@ -7,6 +7,16 @@ class TaskManager
     end
   end
 
+  def self.destroy_database
+    @database ||= Sequel.sqlite('db/task_manager_test.sqlite3')
+    @database.drop_table?(:tasks)
+    @database.create_table?(:tasks) do
+      primary_key :id
+      String :title
+      String :description
+    end
+  end
+
   def self.create(task)
      dataset.insert(title: task[:title], description: task[:description])
   end
