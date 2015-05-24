@@ -26,8 +26,8 @@ class TaskManager
   end
   
   def self.find(id)
-    task = dataset.where(id: id)
-    Task.new(task.first.to_a)
+    task = dataset.where(id: id.to_i)
+    Task.new(task.to_a[0])
   end
 
   def self.update(id, data)
